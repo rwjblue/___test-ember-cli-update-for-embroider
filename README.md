@@ -1,56 +1,14 @@
 # test-ember-cli-update
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Testing ember-cli-update to see if it updates the ember-cli-update.json file
+when migrating from ember-cli@3.26 to ember-cli@3.27.
 
-## Prerequisites
+Manual reproduction steps:
 
-You will need the following things properly installed on your computer.
+1. `npx ember-cli@3.26.0 new test-ember-cli-update`
+2. `npx ember-cli-update --package ember-cli --blueprint app --to 3.27.0-beta.1`
+3. Check `ember-cli-update.json` and `ember-cli-build.js`
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd test-ember-cli-update`
-* `npm install`
-
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `npm run lint`
-* `npm run lint:fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+At the time of writing, the `ember-cli-build.js` includes Embroider "things"
+but the `config/ember-cli-update.json` does not include `--embroider` flag (and
+therefore the Embroider packages are missing from `package.json`).
